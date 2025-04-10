@@ -113,7 +113,7 @@ async function generatePDF(data) {
 
   y -= 5;
   write("Signature de R-One Videaste :", "italic");
-  write("Lu et approuve - Erwan Lebreton", "italic");
+  write("R-One Vidéaste", "italic");
 
   const pdfBytes = await pdfDoc.save();
   return Buffer.from(pdfBytes);
