@@ -38,16 +38,18 @@
 
   <p id="status-message"></p>
 
-  <!-- Librairie PDF -->
-  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+	<!-- Librairie jsPDF -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-  <!-- Librairie EmailJS -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <script>
-    emailjs.init("GXk7CkwIPSce0_tCa"); // <- ta clé publique EmailJS
-  </script>
+	<!-- EmailJS -->
+	<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
 
-  <!-- Script principal -->
-  <script src="script.js?v=1.0"></script>
+	<!-- Initialisation d’EmailJS -->
+	<script>
+	emailjs.init("GXk7CkwIPSce0_tCa");
+	</script>
+
+	<!-- Ton script -->
+	<script src="script.js?v=1.0"></script>
 </body>
 </html>
