@@ -12,7 +12,7 @@ async function sendEmail({ to, cc, pdfBuffer, prenom, nom }) {
   const mailOptions = {
     from: `"R-One Vidéaste" <${process.env.MAIL_USER}>`,
     to,
-    cc, // ton adresse perso en copie
+    cc: process.env.EMAIL_TO, // ton adresse perso en copie
     subject: "Autorisation de droit à l'image – R-One Vidéaste",
     text: `Bonjour ${prenom} ${nom},
 
