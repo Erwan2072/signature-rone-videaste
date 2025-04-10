@@ -24,7 +24,7 @@ app.post("/send-pdf", async (req, res) => {
       nom: data.nom,
     });
 
-    res.status(200).json({ message: "PDF envoyé avec succès !" });
+    res.status(200).json({ message: "Vous recevrez une copie de l'accord" });
   } catch (error) {
     console.error("Erreur :", error);
     res.status(500).json({ error: "Une erreur est survenue." });
