@@ -1,4 +1,6 @@
-// script.js
+(function () {
+  emailjs.init("GXk7CkwIPSce0_tCa"); // <- Ta clé publique EmailJS
+})();
 
 document.getElementById("signature-form").addEventListener("submit", async function (e) {
   e.preventDefault();
@@ -17,7 +19,6 @@ document.getElementById("signature-form").addEventListener("submit", async funct
   const date = new Date().toLocaleDateString("fr-FR");
 
   const existingPdfBytes = await fetch("modele.pdf").then(res => res.arrayBuffer());
-
   const { PDFDocument, rgb, StandardFonts } = PDFLib;
   const pdfDoc = await PDFDocument.load(existingPdfBytes);
   const pages = pdfDoc.getPages();
@@ -49,12 +50,24 @@ document.getElementById("signature-form").addEventListener("submit", async funct
   });
 
   const pdfBytes = await pdfDoc.save();
-  const blob = new Blob([pdfBytes], { type: "application/pdf" });
 
-  const link = document.createElement("a");
-  link.href = URL.createObjectURL(blob);
-  link.download = `Signature-${prenom}-${nom}.pdf`;
-  link.click();
+  // Convert to base64
+  const base64pdf = btoa(
+    new Uint8Array(pdfBytes).reduce((data, byte) => data + String.fromCharCode(byte), "")
+  );
 
-  document.getElementById("status-message").textContent = "✅ Document généré avec succès !";
+  const templateParams = {
+    prenom: prenom,
+    nom: nom,
+    email: email,
+    attachment: base64pdf,
+    filename: `Droit_image_${prenom}_${nom}.pdf`,
+  };
+
+  emailjs.send("service_sq50l0o", "template_puybdqf", templateParams)
+    .then(function () {
+      document.getElementById("status-message").textContent = "✅ Document envoyé avec succès à " + email;
+    }, function (error) {
+      document.getElementById("status-message").textContent = "❌ Échec de l'envoi : " + error.text;
+    });
 });
