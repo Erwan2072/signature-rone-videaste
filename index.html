@@ -26,8 +26,16 @@
 
   <p id="status-message"></p>
 
-  <!-- Lib pour manipuler les PDFs -->
+  <!-- Librairie PDF -->
   <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+
+  <!-- Librairie EmailJS -->
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <script>
+    emailjs.init("GXk7CkwIPSce0_tCa"); // <- ta clé publique EmailJS
+  </script>
+
+  <!-- Script principal -->
   <script src="script.js"></script>
 </body>
 </html>
