@@ -19,7 +19,12 @@ document.getElementById("signature-form").addEventListener("submit", async funct
     return;
   }
 
-  const { jsPDF } = window.jspdf;
+  const { jsPDF } = window.jspdf || {};
+  if (!jsPDF) {
+    alert("Erreur : la librairie jsPDF n'est pas chargée correctement.");
+    return;
+  }
+
   const doc = new jsPDF();
 
   const texte = `
@@ -90,7 +95,7 @@ Lu et approuvé – Erwan Lebreton
     faitA,
     date,
     attachment: base64PDF,
-    filename: `autorisation_droit_image_${prenom}_${nom}.pdf`,
+    filename: `autorisation_droit_image_${prenom}_${nom}.pdf`
   };
 
   emailjs.send("service_sq50l0o", "template_puybdqf", templateParams)
