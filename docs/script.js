@@ -37,7 +37,7 @@ document.getElementById("signature-form").addEventListener("submit", async funct
       const data = await response.json();
 
       if (response.ok) {
-        document.getElementById("status-message").textContent = "✅ PDF envoyé avec succès à " + email;
+        document.getElementById("status-message").textContent = "✅ Vous recevrez une copie du droit à l'image sur " + email;
       } else {
         document.getElementById("status-message").textContent = "❌ Erreur : " + data.error;
       }
