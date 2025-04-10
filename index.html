@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Signature R-One Vidéaste</title>
+</head>
+<body>
+  <h1>Droit à l'image – R-One Vidéaste</h1>
+
+  <form id="signature-form">
+    <label for="prenom">Prénom :</label><br>
+    <input type="text" id="prenom" required /><br><br>
+
+    <label for="nom">Nom :</label><br>
+    <input type="text" id="nom" required /><br><br>
+
+    <label for="email">Email :</label><br>
+    <input type="email" id="email" required /><br><br>
+
+    <input type="checkbox" id="majeur" required />
+    <label for="majeur">Je certifie être majeur(e)</label><br><br>
+
+    <button type="submit">Je signe et j'accepte</button>
+  </form>
+
+  <p id="status-message"></p>
+
+  <!-- Lib pour manipuler les PDFs -->
+  <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
