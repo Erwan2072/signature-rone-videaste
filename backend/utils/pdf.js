@@ -188,7 +188,7 @@ async function generatePDF(data) {
     write("", `Lu et approuve - ${prenom} ${nom}`, { indent: 10, valueFont: italic });
 
     y -= 5;
-    write("Signature de R-One Videaste :", "", { indent: 0 });
+    write("Signature de R-One Videaste :", { indent: 0 });
     write("", "R-One Videaste", { indent: 10, valueFont: italic });
 
     const pdfBytes = await pdfDoc.save();
