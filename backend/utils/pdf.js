@@ -152,7 +152,7 @@ async function generatePDF(data) {
 
   title("3. Etendue de l’autorisation");
   write("", "J'autorise la diffusion, la reproduction, la representation et l'exploitation de mon image et/ou ma voix, en integralite ou partiellement, sur les supports suivants :");
-  write("", "- Reseaux sociaux : Facebook, Instagram, TikTok, YouTube, LinkedIn, etc.", { indent: 10 });
+  write("", "- Reseaux sociaux : Facebook, Instagram, TikTok, YouTube, LinkedIan, etc.", { indent: 10 });
   write("", "- Site internet de R-One Videaste", { indent: 10 });
   write("", "- Supports de communication (print et numerique)", { indent: 10 });
 
