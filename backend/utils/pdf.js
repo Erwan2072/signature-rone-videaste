@@ -18,43 +18,28 @@ async function generatePDF(data) {
   }
 
   const pdfDoc = await PDFDocument.create();
-  const page = pdfDoc.addPage([595.28, 841.89]); // A4 format
+  let page = pdfDoc.addPage([595, 842]); // A4
 
   const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
   const bold = await pdfDoc.embedFont(StandardFonts.HelveticaBold);
   const italic = await pdfDoc.embedFont(StandardFonts.HelveticaOblique);
 
-  // Logo (only if found)
-  const logoPath = path.join(__dirname, "..", "..", "docs", "logo.png");
-  if (fs.existsSync(logoPath)) {
-    const logoBytes = fs.readFileSync(logoPath);
-    const logoImage = await pdfDoc.embedPng(logoBytes);
-    const logoDims = logoImage.scale(0.25);
-    page.drawImage(logoImage, {
-      x: 40,
-      y: 780,
-      width: logoDims.width,
-      height: logoDims.height,
-    });
-    page.drawText("R-One Vidéaste", {
-      x: 100,
-      y: 790,
-      font: bold,
-      size: 14,
-      color: rgb(0.1, 0.1, 0.1)
-    });
-  }
-
-  let y = 750;
   const margin = 40;
+  let y = 800;
+
   const lineHeight = 16;
   const maxWidth = 515;
 
-  function write(text, style = "", indent = 0) {
+  function newPage() {
+    page = pdfDoc.addPage([595, 842]);
+    y = 800;
+  }
+
+  const write = (text, style = "", indent = 0) => {
     const usedFont = style === "bold" ? bold : style === "italic" ? italic : font;
     const words = clean(text).split(" ");
     let line = "";
-    const lines = [];
+    const textLines = [];
 
     for (const word of words) {
       const testLine = line + word + " ";
@@ -62,13 +47,14 @@ async function generatePDF(data) {
       if (width < (maxWidth - indent)) {
         line = testLine;
       } else {
-        lines.push(line);
+        textLines.push(line);
         line = word + " ";
       }
     }
-    if (line) lines.push(line);
+    if (line) textLines.push(line);
 
-    for (const l of lines) {
+    for (const l of textLines) {
+      if (y < 50) newPage();
       page.drawText(l.trim(), {
         x: margin + indent,
         y,
@@ -78,9 +64,10 @@ async function generatePDF(data) {
       });
       y -= lineHeight;
     }
-  }
+  };
 
   const title = (text) => {
+    if (y < 60) newPage();
     page.drawText(clean(text), {
       x: margin,
       y,
@@ -91,8 +78,36 @@ async function generatePDF(data) {
     y -= 18;
   };
 
-  write("AUTORISATION DE DROIT A L'IMAGE", "bold");
-  y -= 10;
+  const logoPath = path.resolve(__dirname, "../../docs/logo.png");
+  if (fs.existsSync(logoPath)) {
+    const logoBytes = fs.readFileSync(logoPath);
+    const logoImage = await pdfDoc.embedPng(logoBytes);
+    const logoDims = logoImage.scale(0.25);
+    page.drawImage(logoImage, {
+      x: 40,
+      y: 780,
+      width: logoDims.width,
+      height: logoDims.height
+    });
+
+    page.drawText("R-One Vidéaste", {
+      x: 100,
+      y: 790,
+      font: bold,
+      size: 14,
+      color: rgb(0.1, 0.1, 0.1)
+    });
+    y = 750;
+  }
+
+  page.drawText(clean("AUTORISATION DE DROIT A L'IMAGE"), {
+    x: margin,
+    y,
+    font: bold,
+    size: 16,
+    color: rgb(15 / 255, 82 / 255, 186 / 255)
+  });
+  y -= 25;
   write("Conformement aux articles du Code civil et au Reglement General sur la Protection des Donnees (RGPD)");
 
   title("1. Identite des parties");
