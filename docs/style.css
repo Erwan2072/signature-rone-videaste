@@ -124,4 +124,17 @@ body {
 	.reglement-scrollable h2 {
 	  font-size: 1.1rem;
 	}
+
+	.reglement-scrollable {
+		max-height: 300px;
+		overflow-y: auto;
+		padding: 1rem;
+		margin-bottom: 1rem;
+		background-color: #f9f9f9;
+		border: 1px solid #ccc;
+		border-radius: 6px;
+		font-size: 0.95rem;
+		line-height: 1.6;
+	  }
+
   }
