@@ -90,19 +90,17 @@ async function generatePDF(data) {
       }
     };
 
-
-    const titleText = clean("AUTORISATION DE DROIT A L'IMAGE");
-    const titleSize = 16;
-    const textWidth = bold.widthOfTextAtSize(titleText, titleSize);
-    const centeredX = (595 - textWidth) / 2;
-
-    page.drawText(titleText, {
-      x: centeredX,
-      y,
-      font: bold,
-      size: titleSize,
-      color: rgb(15 / 255, 82 / 255, 186 / 255),
-    });
+    const title = (text, useBold = true) => {
+      if (y < 60) newPage();
+      page.drawText(clean(text), {
+        x: margin,
+        y,
+        font: useBold ? bold : font,
+        size: 13,
+        color: rgb(15 / 255, 82 / 255, 186 / 255)
+      });
+      y -= 18;
+    };
 
     const logoPath = path.resolve(__dirname, "../docs/logo.png");
     if (fs.existsSync(logoPath)) {
@@ -126,13 +124,22 @@ async function generatePDF(data) {
       y = 750;
     }
 
-    page.drawText(clean("AUTORISATION DE DROIT A L'IMAGE"), {
-      x: margin,
+    // Juste après le logo (ou après y = 750), insère ceci :
+
+    const grandTitre = clean("AUTORISATION DE DROIT A L'IMAGE");
+    const grandTitreSize = 16;
+    const grandTitreWidth = bold.widthOfTextAtSize(grandTitre, grandTitreSize);
+    const centerX = (595 - grandTitreWidth) / 2;
+
+    page.drawText(grandTitre, {
+      x: centerX,
       y,
       font: bold,
-      size: 16,
-      color: rgb(15 / 255, 82 / 255, 186 / 255)
+      size: grandTitreSize,
+      color: rgb(15 / 255, 82 / 255, 186 / 255),
     });
+    y -= 25;
+
     y -= 25;
     write("", "Conformement aux articles du Code civil et au Reglement General sur la Protection des Donnees (RGPD)");
     y -= 10;
