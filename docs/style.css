@@ -66,29 +66,39 @@ body {
 	font-weight: bold;
   }
 
-  /* Bloc règlement lisible sur tous les écrans */
-  .reglement {
-	background-color: #f9f9f9;
-	border: 1px solid #ddd;
+  /* Bloc règlement scrollable */
+  .reglement-scrollable {
+	max-height: 400px;
+	overflow-y: auto;
+	border: 1px solid #ccc;
 	padding: 1rem;
 	margin-bottom: 2rem;
+	background-color: #fdfdfd;
+	border-radius: 6px;
 	font-size: 0.95rem;
 	line-height: 1.6;
-	border-radius: 4px;
   }
 
-  .reglement h2 {
-	color: #1544b5;
+  .reglement-scrollable h2 {
 	font-size: 1.2rem;
+	color: #1544b5;
 	margin-top: 0;
+	margin-bottom: 1rem;
+	text-align: center;
   }
 
-  .reglement ul {
+  .reglement-scrollable h3 {
+	margin-top: 1.2rem;
+	font-size: 1rem;
+	color: #222;
+  }
+
+  .reglement-scrollable ul {
 	padding-left: 1.2rem;
 	margin: 0.5rem 0;
   }
 
-  .reglement li {
+  .reglement-scrollable li {
 	margin-bottom: 0.3rem;
   }
 
@@ -106,11 +116,12 @@ body {
 	  font-size: 1.5rem;
 	}
 
-	.reglement {
+	.reglement-scrollable {
 	  font-size: 0.9rem;
+	  max-height: 300px;
 	}
 
-	.reglement h2 {
+	.reglement-scrollable h2 {
 	  font-size: 1.1rem;
 	}
   }
