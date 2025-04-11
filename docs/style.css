@@ -1,0 +1,80 @@
+/* style.css */
+body {
+	font-family: Arial, sans-serif;
+	margin: 0;
+	padding: 0 1rem;
+	background-color: #fff;
+  }
+
+  .container {
+	max-width: 600px;
+	margin: 0 auto;
+	padding-top: 2rem;
+  }
+
+  h1 {
+	text-align: center;
+	font-size: 1.8rem;
+	margin-bottom: 2rem;
+  }
+
+  form {
+	display: flex;
+	flex-direction: column;
+  }
+
+  label {
+	margin: 0.5rem 0 0.2rem;
+	font-weight: bold;
+  }
+
+  input,
+  textarea,
+  select {
+	padding: 0.5rem;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	font-size: 1rem;
+	background-color: #f0f4ff;
+	width: 100%;
+	box-sizing: border-box;
+  }
+
+  input[type="checkbox"] {
+	width: auto;
+	margin-right: 0.5rem;
+  }
+
+  button {
+	margin-top: 1rem;
+	padding: 0.7rem;
+	background-color: #2ecc71;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+  }
+
+  button:hover {
+	background-color: #27ae60;
+  }
+
+  .success-message {
+	margin-top: 1rem;
+	color: #2ecc71;
+	font-weight: bold;
+  }
+
+  @media (max-width: 600px) {
+	body {
+	  padding: 0.5rem;
+	}
+
+	.container {
+	  padding: 1rem 0.5rem;
+	}
+
+	h1 {
+	  font-size: 1.5rem;
+	}
+  }
