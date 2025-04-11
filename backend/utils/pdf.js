@@ -15,7 +15,7 @@ async function generatePDF(data) {
     } = data;
 
     function clean(text) {
-      return text.normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
+      return String(text || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "");
     }
 
     const pdfDoc = await PDFDocument.create();
