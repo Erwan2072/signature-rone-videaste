@@ -66,6 +66,33 @@ body {
 	font-weight: bold;
   }
 
+  /* Bloc règlement lisible sur tous les écrans */
+  .reglement {
+	background-color: #f9f9f9;
+	border: 1px solid #ddd;
+	padding: 1rem;
+	margin-bottom: 2rem;
+	font-size: 0.95rem;
+	line-height: 1.6;
+	border-radius: 4px;
+  }
+
+  .reglement h2 {
+	color: #1544b5;
+	font-size: 1.2rem;
+	margin-top: 0;
+  }
+
+  .reglement ul {
+	padding-left: 1.2rem;
+	margin: 0.5rem 0;
+  }
+
+  .reglement li {
+	margin-bottom: 0.3rem;
+  }
+
+  /* Responsive */
   @media (max-width: 600px) {
 	body {
 	  padding: 0.5rem;
@@ -80,28 +107,10 @@ body {
 	}
 
 	.reglement {
-		background-color: #f9f9f9;
-		border: 1px solid #ddd;
-		padding: 1rem;
-		margin-bottom: 2rem;
-		font-size: 0.95rem;
-		line-height: 1.6;
-		border-radius: 4px;
-	  }
+	  font-size: 0.9rem;
+	}
 
-	  .reglement h2 {
-		color: #1544b5;
-		font-size: 1.2rem;
-		margin-top: 0;
-	  }
-
-	  .reglement ul {
-		padding-left: 1.2rem;
-		margin: 0.5rem 0;
-	  }
-
-	  .reglement li {
-		margin-bottom: 0.3rem;
-	  }
-
+	.reglement h2 {
+	  font-size: 1.1rem;
+	}
   }
