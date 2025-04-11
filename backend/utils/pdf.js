@@ -102,7 +102,7 @@ async function generatePDF(data) {
       y -= 18;
     };
 
-    const logoPath = path.resolve(__dirname, "../../docs/logo.png");
+    const logoPath = path.resolve(__dirname, "../docs/logo.png");
     if (fs.existsSync(logoPath)) {
       const logoBytes = fs.readFileSync(logoPath);
       const logoImage = await pdfDoc.embedPng(logoBytes);
@@ -186,9 +186,8 @@ async function generatePDF(data) {
     y -= 20;
     write("Signature de la personne concernee :", " (precedee de la mention 'Lu et approuve')", { indent: 0 });
     write("", `Lu et approuve - ${prenom} ${nom}`, { indent: 10, valueFont: italic });
-
-    y -= 5;
-    write("Signature de R-One Videaste :", { indent: 0 });
+    y -= 20;
+    write("Signature de R-One Videaste :", "", { indent: 0 });
     write("", "R-One Videaste", { indent: 10, valueFont: italic });
 
     const pdfBytes = await pdfDoc.save();
