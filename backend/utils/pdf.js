@@ -90,17 +90,19 @@ async function generatePDF(data) {
       }
     };
 
-    const title = (text, useBold = true) => {
-      if (y < 60) newPage();
-      page.drawText(clean(text), {
-        x: margin,
-        y,
-        font: useBold ? bold : font,
-        size: 13,
-        color: rgb(15 / 255, 82 / 255, 186 / 255)
-      });
-      y -= 18;
-    };
+
+    const titleText = clean("AUTORISATION DE DROIT A L'IMAGE");
+    const titleSize = 16;
+    const textWidth = bold.widthOfTextAtSize(titleText, titleSize);
+    const centeredX = (595 - textWidth) / 2;
+
+    page.drawText(titleText, {
+      x: centeredX,
+      y,
+      font: bold,
+      size: titleSize,
+      color: rgb(15 / 255, 82 / 255, 186 / 255),
+    });
 
     const logoPath = path.resolve(__dirname, "../docs/logo.png");
     if (fs.existsSync(logoPath)) {
@@ -187,7 +189,7 @@ async function generatePDF(data) {
     write("Signature de la personne concernee :", " (precedee de la mention 'Lu et approuve')", { indent: 0 });
     write("", `Lu et approuve - ${prenom} ${nom}`, { indent: 10, valueFont: italic });
     y -= 20;
-    write("Signature de R-One Videaste :", "1", { indent: 0 });
+    write("Signature de R-One Videaste :", " ", { indent: 0 });
     write("", "R-One Videaste", { indent: 10, valueFont: italic });
 
     const pdfBytes = await pdfDoc.save();
