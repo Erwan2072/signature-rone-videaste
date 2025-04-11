@@ -78,4 +78,30 @@ body {
 	h1 {
 	  font-size: 1.5rem;
 	}
+
+	.reglement {
+		background-color: #f9f9f9;
+		border: 1px solid #ddd;
+		padding: 1rem;
+		margin-bottom: 2rem;
+		font-size: 0.95rem;
+		line-height: 1.6;
+		border-radius: 4px;
+	  }
+
+	  .reglement h2 {
+		color: #1544b5;
+		font-size: 1.2rem;
+		margin-top: 0;
+	  }
+
+	  .reglement ul {
+		padding-left: 1.2rem;
+		margin: 0.5rem 0;
+	  }
+
+	  .reglement li {
+		margin-bottom: 0.3rem;
+	  }
+
   }
