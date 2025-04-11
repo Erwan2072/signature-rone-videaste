@@ -26,7 +26,6 @@ async function generatePDF(data) {
 
   const margin = 40;
   let y = 800;
-
   const lineHeight = 16;
   const maxWidth = 515;
 
@@ -35,15 +34,21 @@ async function generatePDF(data) {
     y = 800;
   }
 
-  const write = (text, style = "", indent = 0) => {
-    const usedFont = style === "bold" ? bold : style === "italic" ? italic : font;
-    const words = clean(text).split(" ");
+  const write = (label, value = "", options = {}) => {
+    const indent = options.indent || 0;
+    const labelFont = bold;
+    const valueFont = italic;
+    const labelText = clean(label);
+    const valueText = clean(value);
+
+    const fullLine = labelText + valueText;
+    const words = fullLine.split(" ");
     let line = "";
-    const textLines = [];
+    let textLines = [];
 
     for (const word of words) {
       const testLine = line + word + " ";
-      const width = usedFont.widthOfTextAtSize(testLine, 11);
+      const width = font.widthOfTextAtSize(testLine, 11);
       if (width < (maxWidth - indent)) {
         line = testLine;
       } else {
@@ -55,13 +60,31 @@ async function generatePDF(data) {
 
     for (const l of textLines) {
       if (y < 50) newPage();
-      page.drawText(l.trim(), {
-        x: margin + indent,
-        y,
-        font: usedFont,
-        size: 11,
-        color: rgb(0, 0, 0)
-      });
+      const parts = l.split(valueText);
+      const labelPart = parts[0] || "";
+      const valuePart = parts[1] ? valueText : "";
+      let xCursor = margin + indent;
+
+      if (labelPart) {
+        page.drawText(labelPart.trim(), {
+          x: xCursor,
+          y,
+          font: labelFont,
+          size: 11,
+          color: rgb(0, 0, 0),
+        });
+        xCursor += labelFont.widthOfTextAtSize(labelPart, 11);
+      }
+
+      if (valuePart) {
+        page.drawText(valuePart.trim(), {
+          x: xCursor,
+          y,
+          font: valueFont,
+          size: 11,
+          color: rgb(0, 0, 0),
+        });
+      }
       y -= lineHeight;
     }
   };
@@ -108,63 +131,64 @@ async function generatePDF(data) {
     color: rgb(15 / 255, 82 / 255, 186 / 255)
   });
   y -= 25;
-  write("Conformement aux articles du Code civil et au Reglement General sur la Protection des Donnees (RGPD)");
+  write("", "Conformement aux articles du Code civil et au Reglement General sur la Protection des Donnees (RGPD)");
 
   title("1. Identite des parties");
-  write(`Nom et prenom : ${prenom} ${nom}`);
-  write(`Adresse : ${adresse}`);
-  write(`Telephone : ${telephone}`);
-  write(`Adresse e-mail : ${email}`);
-  write("Nom de l'entreprise : R-One Videaste");
-  write("Siret : 94288194700017");
-  write("Representee par : M. Erwan Lebreton");
-  write("Adresse professionnelle : 5 rue Rene Dumont 35235 Thorigne-Fouillard");
-  write("E-mail professionnel : rone.sonsvideos@gmail.com");
+  write("Nom et prenom : ", `${prenom} ${nom}`);
+  write("Adresse : ", adresse);
+  write("Telephone : ", telephone);
+  write("Adresse e-mail : ", email);
+  write("Nom de l'entreprise : ", "R-One Videaste");
+  write("Siret : ", "94288194700017");
+  write("Representee par : ", "M. Erwan Lebreton");
+  write("Adresse professionnelle : ", "5 rue Rene Dumont 35235 Thorigne-Fouillard");
+  write("E-mail professionnel : ", "rone.sonsvideos@gmail.com");
 
   title("2. Objet de l’autorisation");
-  write("Par la presente, j’autorise R-One Videaste à me filmer, photographier et enregistrer ma voix et/ou mon image dans le cadre des prestations suivantes :");
-  write("- Captation d’evenements publics ou prives (mariages, reportages, interviews, etc.)", "", 10);
-  write("- Production de contenus a des fins de communication (reseaux sociaux, site web, supports publicitaires, etc.)", "", 10);
-  write("- Montage et diffusion audiovisuelle", "", 10);
+  write("", "Par la presente, j’autorise R-One Videaste à me filmer, photographier et enregistrer ma voix et/ou mon image dans le cadre des prestations suivantes :");
+  write("", "- Captation d’evenements publics ou prives (mariages, reportages, interviews, etc.)", { indent: 10 });
+  write("", "- Production de contenus a des fins de communication (reseaux sociaux, site web, supports publicitaires, etc.)", { indent: 10 });
+  write("", "- Montage et diffusion audiovisuelle", { indent: 10 });
 
   title("3. Etendue de l’autorisation");
-  write("J'autorise la diffusion, la reproduction, la representation et l'exploitation de mon image et/ou ma voix, en integralite ou partiellement, sur les supports suivants :");
-  write("- Reseaux sociaux : Facebook, Instagram, TikTok, YouTube, LinkedIn, etc.", "", 10);
-  write("- Site internet de R-One Videaste", "", 10);
-  write("- Supports de communication (print et numerique)", "", 10);
+  write("", "J'autorise la diffusion, la reproduction, la representation et l'exploitation de mon image et/ou ma voix, en integralite ou partiellement, sur les supports suivants :");
+  write("", "- Reseaux sociaux : Facebook, Instagram, TikTok, YouTube, LinkedIn, etc.", { indent: 10 });
+  write("", "- Site internet de R-One Videaste", { indent: 10 });
+  write("", "- Supports de communication (print et numerique)", { indent: 10 });
 
   title("4. Duree de l’autorisation");
-  write("Cette autorisation est valable pour une duree de 5 ans a compter de la date de signature du present document.");
+  write("", "Cette autorisation est valable pour une duree de 5 ans a compter de la date de signature du present document.");
 
   title("5. Droit de retrait");
-  write("A l’issue de cette periode de 5 ans, je pourrai demander le retrait des contenus me representant, par simple demande ecrite a l’adresse e-mail de R-One Videaste.");
-  write("Je reconnais qu’a l’expiration de cette duree, le retrait sera effectue sans delai injustifie mais sans que cela ne puisse donner lieu a reclamation, indemnisation ou poursuite judiciaire a l’encontre de R-One Videaste, conformement a l’article 9 du Code civil et aux principes de bonne foi contractuelle.");
+  write("", "A l’issue de cette periode de 5 ans, je pourrai demander le retrait des contenus me representant, par simple demande ecrite a l’adresse e-mail de R-One Videaste.");
+  write("", "Je reconnais qu’a l’expiration de cette duree, le retrait sera effectue sans delai injustifie mais sans que cela ne puisse donner lieu a reclamation, indemnisation ou poursuite judiciaire a l’encontre de R-One Videaste, conformement a l’article 9 du Code civil et aux principes de bonne foi contractuelle.");
 
   title("6. Protection des donnees (RGPD)");
-  write("Conformement aux articles 6, 7, 12 a 15 et 17 du Reglement (UE) 2016/679 dit RGPD, je suis informe(e) que :");
-  write("- Mes donnees (image, voix, nom, etc.) sont traitees de maniere legale, loyale et transparente.", "", 10);
-  write("- Je peux a tout moment exercer mes droits d’acces, de rectification, d’opposition, ou de suppression de mes donnees personnelles, en adressant une demande a R-One Videaste.", "", 10);
-  write("- Aucune donnee ne sera transmise a un tiers sans mon consentement.", "", 10);
+  write("", "Conformement aux articles 6, 7, 12 a 15 et 17 du Reglement (UE) 2016/679 dit RGPD, je suis informe(e) que :");
+  write("", "- Mes donnees (image, voix, nom, etc.) sont traitees de maniere legale, loyale et transparente.", { indent: 10 });
+  write("", "- Je peux a tout moment exercer mes droits d’acces, de rectification, d’opposition, ou de suppression de mes donnees personnelles, en adressant une demande a R-One Videaste.", { indent: 10 });
+  write("", "- Aucune donnee ne sera transmise a un tiers sans mon consentement.", { indent: 10 });
 
   title("7. Absence de contrepartie");
-  write("Cette autorisation est accordee a titre gracieux, sans contrepartie financiere, sauf mention contraire stipulee contractuellement.");
+  write("", "Cette autorisation est accordee a titre gracieux, sans contrepartie financiere, sauf mention contraire stipulee contractuellement.");
 
   title("8. Articles de loi de reference");
-  write("- Article 9 du Code civil : 'Chacun a droit au respect de sa vie privee.'", "", 10);
-  write("- Article 226-1 du Code penal : interdit l’enregistrement de l’image d’une personne sans son consentement.", "", 10);
-  write("- Articles 6, 7, 12 a 15, 17 du RGPD (Reglement UE 2016/679)", "", 10);
-  write("- Jurisprudence constante : toute diffusion d’image sans autorisation est illegale, meme dans un cadre artistique ou journalistique.", "", 10);
+  write("", "- Article 9 du Code civil : 'Chacun a droit au respect de sa vie privee.'", { indent: 10 });
+  write("", "- Article 226-1 du Code penal : interdit l’enregistrement de l’image d’une personne sans son consentement.", { indent: 10 });
+  write("", "- Articles 6, 7, 12 a 15, 17 du RGPD (Reglement UE 2016/679)", { indent: 10 });
+  write("", "- Jurisprudence constante : toute diffusion d’image sans autorisation est illegale, meme dans un cadre artistique ou journalistique.", { indent: 10 });
 
   y -= 10;
-  write(`Fait a : ${faitA}`, "bold");
-  write(`Le : ${date}`, "bold");
+  write("Fait a : ", faitA, { indent: 0 });
+  write("Le : ", date, { indent: 0 });
 
-  y -= 10;
-  write("Signature de la personne concernee : (precedee de la mention 'Lu et approuve')", "italic");
-  write(`Lu et approuve - ${prenom} ${nom}`, "italic");
+  y -= 20;
+  write("Signature de la personne concernee :", " (precedee de la mention 'Lu et approuve')", { indent: 0 });
+  write("", `Lu et approuve - ${prenom} ${nom}`, { indent: 10 });
 
-  write("Signature de R-One Videaste :", "italic");
-  write("R-One Vidéaste", "italic");
+  y -= 5;
+  write("Signature de R-One Videaste :", "", { indent: 0 });
+  write("", "R-One Videaste", { indent: 10 });
 
   const pdfBytes = await pdfDoc.save();
   return Buffer.from(pdfBytes);
