@@ -167,4 +167,18 @@ body {
 	.logo-img {
 	  width: 100px;
 	}
+
+	footer {
+		margin-top: 2rem;
+		text-align: center;
+	}
+
+	.footer-banner {
+		width: 100%;
+		max-width: 100%;
+		height: auto;
+		display: block;
+		margin: 0 auto;
+		border-top: 4px solid #444;
+	}
   }
