@@ -7,124 +7,95 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <body>
-    <!-- Logo au-dessus du header -->
-    <div class="logo-wrapper">
-      <img src="logo.png" alt="Logo R-One Vidéaste" class="logo" />
+  <!-- Logo + header -->
+  <div class="logo-header">
+    <img src="logo.png" alt="Logo R-One Vidéaste" class="logo-img" />
+    <div class="title-header">
+      <span class="r-text">R-</span><span class="one-text">One</span> <span class="videaste-text">VIDÉASTE</span>
     </div>
+  </div>
 
-    <!-- Header avec titre stylisé -->
-    <header>
-      <img src="logo.png" alt="Logo R-One Vidéaste">
-      <h1><span class="brand-highlight">R-One</span> <span class="brand-subtext">Vidéaste</span></h1>
-    </header>
+  <!-- Contenu principal -->
+  <div class="container">
+    <div class="grid-layout">
+      <!-- Bloc règlement -->
+      <div class="reglement-scrollable" id="terms-box" onscroll="checkScroll()">
+        <h2>AUTORISATION DE DROIT À L'IMAGE</h2>
+        <p id="scroll-warning" style="color: red; font-weight: bold; display: none;">
+          ⚠️ Veuillez lire le règlement jusqu'en bas pour débloquer le formulaire. ⚠️
+        </p>
+        <p>Conformément aux articles du Code civil et au Règlement Général sur la Protection des Données (RGPD)</p>
+        <h3>1. Identité des parties</h3>
+        <p>
+          Nom et prénom de la personne concernée : .............................................<br>
+          Adresse : .........................................................................<br>
+          Téléphone : ........................................................................<br>
+          Adresse e-mail : .................................................................<br><br>
+          Nom de l'entreprise : <strong>R-One Vidéaste</strong><br>
+          Représentée par : <strong>Monsieur Erwan Lebreton</strong><br>
+          Adresse professionnelle : <strong>5 rue René Dumont 35235 Thorigné-Fouillard</strong><br>
+          E-mail professionnel : <strong>rone.sonsvideos@gmail.com</strong>
+        </p>
+        <h3>2. Objet de l’autorisation</h3>
+        <p>Par la présente, j’autorise R-One Vidéaste à me filmer, photographier et enregistrer ma voix et/ou mon image dans le cadre des prestations suivantes :</p>
+        <ul>
+          <li>Captation d’événements publics ou privés (mariages, reportages, interviews, etc.)</li>
+          <li>Production de contenus à des fins de communication (réseaux sociaux, site web, supports publicitaires, etc.)</li>
+          <li>Montage et diffusion audiovisuelle</li>
+        </ul>
+        <h3>3. Étendue de l’autorisation</h3>
+        <p>J'autorise la diffusion sur les supports suivants :</p>
+        <ul>
+          <li>Réseaux sociaux : Facebook, Instagram, TikTok, YouTube, LinkedIn, etc.</li>
+          <li>Site internet de R-One Vidéaste</li>
+          <li>Supports de communication (print et numérique)</li>
+        </ul>
+        <h3>4. Durée de l’autorisation</h3>
+        <p>Cette autorisation est valable pour une durée de 5 ans à compter de la date de signature du présent document.</p>
+        <h3>5. Droit de retrait</h3>
+        <p>À l’issue de cette période, je pourrai demander le retrait des contenus me représentant, par simple demande écrite à l’adresse e-mail de R-One Vidéaste.</p>
+        <p>Je reconnais que ce retrait s’effectuera sans délai injustifié, mais sans indemnisation ni poursuite judiciaire possible.</p>
+        <h3>6. Protection des données (RGPD)</h3>
+        <ul>
+          <li>Mes données sont traitées de manière légale, loyale et transparente.</li>
+          <li>Je peux exercer mes droits à tout moment par demande écrite.</li>
+          <li>Aucune donnée ne sera transmise à un tiers sans mon consentement.</li>
+        </ul>
+        <h3>7. Absence de contrepartie</h3>
+        <p>Cette autorisation est accordée à titre gracieux, sauf mention contraire stipulée contractuellement.</p>
+        <h3>8. Articles de loi de référence</h3>
+        <ul>
+          <li>Article 9 du Code civil</li>
+          <li>Article 226-1 du Code pénal</li>
+          <li>Articles 6, 7, 12 à 15, 17 du RGPD</li>
+          <li>Jurisprudence constante</li>
+        </ul>
+      </div>
 
-    <div class="container">
-      <!-- reste du contenu ici -->
-
-    <!-- Bloc lecture seule -->
-    <div class="reglement-scrollable" id="terms-box" onscroll="checkScroll()">
-      <h2>AUTORISATION DE DROIT À L'IMAGE</h2>
-      <p id="scroll-warning" style="color: red; font-weight: bold; display: none;">
-        ⚠️ Veuillez lire le règlement jusqu'en bas pour débloquer le formulaire.⚠️
-      </p>
-      <p>Conformément aux articles du Code civil et au Règlement Général sur la Protection des Données (RGPD)</p>
-
-      <h3>1. Identité des parties</h3>
-      <p>
-        Nom et prénom de la personne concernée : .............................................<br>
-        Adresse : .........................................................................<br>
-        Téléphone : ........................................................................<br>
-        Adresse e-mail : .................................................................<br><br>
-        Nom de l'entreprise : <strong>R-One Vidéaste</strong><br>
-        Représentée par : <strong>Monsieur Erwan Lebreton</strong><br>
-        Adresse professionnelle : <strong>5 rue René Dumont 35235 Thorigné-Fouillard</strong><br>
-        E-mail professionnel : <strong>rone.sonsvideos@gmail.com</strong>
-      </p>
-
-      <h3>2. Objet de l’autorisation</h3>
-      <p>Par la présente, j’autorise R-One Vidéaste à me filmer, photographier et enregistrer ma voix et/ou mon image dans le cadre des prestations suivantes :</p>
-      <ul>
-        <li>Captation d’événements publics ou privés (mariages, reportages, interviews, etc.)</li>
-        <li>Production de contenus à des fins de communication (réseaux sociaux, site web, supports publicitaires, etc.)</li>
-        <li>Montage et diffusion audiovisuelle</li>
-      </ul>
-
-      <h3>3. Étendue de l’autorisation</h3>
-      <p>J'autorise la diffusion, la reproduction, la représentation et l'exploitation de mon image et/ou ma voix, en intégralité ou partiellement, sur les supports suivants :</p>
-      <ul>
-        <li>Réseaux sociaux : Facebook, Instagram, TikTok, YouTube, LinkedIn, etc.</li>
-        <li>Site internet de R-One Vidéaste</li>
-        <li>Supports de communication (print et numérique)</li>
-      </ul>
-
-      <h3>4. Durée de l’autorisation</h3>
-      <p>Cette autorisation est valable pour une durée de 5 ans à compter de la date de signature du présent document.</p>
-
-      <h3>5. Droit de retrait</h3>
-      <p>À l’issue de cette période de 5 ans, je pourrai demander le retrait des contenus me représentant, par simple demande écrite à l’adresse e-mail de R-One Vidéaste.</p>
-      <p>Je reconnais qu’à l’expiration de cette durée, le retrait sera effectué sans délai injustifié mais sans que cela ne puisse donner lieu à réclamation, indemnisation ou poursuite judiciaire à l’encontre de R-One Vidéaste, conformément à l’article 9 du Code civil et aux principes de bonne foi contractuelle.</p>
-
-      <h3>6. Protection des données (RGPD)</h3>
-      <ul>
-        <li>Mes données (image, voix, nom, etc.) sont traitées de manière légale, loyale et transparente.</li>
-        <li>Je peux à tout moment exercer mes droits d’accès, de rectification, d’opposition, ou de suppression de mes données personnelles, en adressant une demande à R-One Vidéaste.</li>
-        <li>Aucune donnée ne sera transmise à un tiers sans mon consentement.</li>
-      </ul>
-
-      <h3>7. Absence de contrepartie</h3>
-      <p>Cette autorisation est accordée à titre gracieux, sans contrepartie financière, sauf mention contraire stipulée contractuellement.</p>
-
-      <h3>8. Articles de loi de référence</h3>
-      <ul>
-        <li>Article 9 du Code civil : « Chacun a droit au respect de sa vie privée. »</li>
-        <li>Article 226-1 du Code pénal : interdit l’enregistrement de l’image d’une personne sans son consentement.</li>
-        <li>Articles 6, 7, 12 à 15, 17 du RGPD (Règlement UE 2016/679)</li>
-        <li>Jurisprudence constante : toute diffusion d’image sans autorisation est illégale, même dans un cadre artistique ou journalistique.</li>
-      </ul>
-
-      <p>Fait à : .....................................<br>
-      Le : .........................................<br><br>
-      Signature de la personne concernée : (précédée de la mention « Lu et approuvé »)<br>
-      ...................................................<br><br>
-      Signature de R-One Vidéaste : (précédée de la mention « Lu et approuvé »)<br>
-      ...................................................
-      </p>
-
+      <!-- Formulaire -->
+      <form id="signature-form">
+        <label for="prenom">Prénom :</label>
+        <input type="text" id="prenom" required />
+        <label for="nom">Nom :</label>
+        <input type="text" id="nom" required />
+        <label for="email">Email :</label>
+        <input type="email" id="email" required />
+        <label for="adresse">Adresse :</label>
+        <input type="text" id="adresse" required />
+        <label for="telephone">Téléphone :</label>
+        <input type="text" id="telephone" required />
+        <label for="faitA">Fait à :</label>
+        <input type="text" id="faitA" required />
+        <label for="date">Date :</label>
+        <input type="date" id="date" required />
+        <label>
+          <input type="checkbox" id="majeur" required />
+          Je certifie être majeur(e)
+        </label>
+        <button type="submit">Je signe et j'accepte</button>
+        <p id="status-message" class="success-message"></p>
+      </form>
     </div>
-
-
-    <!-- Formulaire -->
-    <form id="signature-form">
-      <label for="prenom">Prénom :</label>
-      <input type="text" id="prenom" required />
-
-      <label for="nom">Nom :</label>
-      <input type="text" id="nom" required />
-
-      <label for="email">Email :</label>
-      <input type="email" id="email" required />
-
-      <label for="adresse">Adresse :</label>
-      <input type="text" id="adresse" required />
-
-      <label for="telephone">Téléphone :</label>
-      <input type="text" id="telephone" required />
-
-      <label for="faitA">Fait à :</label>
-      <input type="text" id="faitA" required />
-
-      <label for="date">Date :</label>
-      <input type="date" id="date" required />
-
-      <label>
-        <input type="checkbox" id="majeur" required />
-        Je certifie être majeur(e)
-      </label>
-
-      <button type="submit">Je signe et j'accepte</button>
-    </form>
-    <p id="status-message" class="success-message"></p>
   </div>
 
   <script src="script.js"></script>

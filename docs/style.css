@@ -5,62 +5,111 @@ body {
 	margin: 0;
 	padding: 0;
 	color: #000;
-}
+  }
 
-/* Header */
-header {
-	background-color: #444;
-	padding: 1rem;
-	text-align: center;
-}
+  /* Header complet avec logo centré au-dessus */
+  .logo-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 1rem 0 0.5rem;
+  }
 
-header img {
+  .logo-img {
 	width: 120px;
 	height: auto;
 	border-radius: 50%;
 	margin-bottom: 0.5rem;
-}
+  }
 
-header h1 {
-	font-size: 1.5rem;
-	margin: 0;
-	font-weight: normal;
-}
-
-.brand-highlight {
+  .title-header {
+	font-size: 1.8rem;
+	text-align: center;
 	font-weight: bold;
-	color: #e60000; /* Rouge pour "R-One" */
-}
+	margin-bottom: 1.5rem;
+  }
 
-.brand-subtext {
-	color: #ffffff; /* Blanc pour "Vidéaste" */
+  .r-text {
+	color: #e60000; /* Rouge vif */
+  }
+
+  .one-text {
+	color: white;
+  }
+
+  .videaste-text {
+	color: white;
 	font-weight: bold;
-}
+	letter-spacing: 1px;
+  }
 
-/* Container */
-.container {
-	max-width: 600px;
+  /* Grille principale */
+  .container {
+	max-width: 1000px;
 	margin: 2rem auto;
 	padding: 1rem;
 	background-color: #fdfdfd;
 	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  }
 
-/* Formulaire */
-form {
+  .grid-layout {
+	display: flex;
+	gap: 2rem;
+	justify-content: space-between;
+  }
+
+  /* Bloc règlement scrollable */
+  .reglement-scrollable {
+	flex: 1;
+	max-height: 600px;
+	overflow-y: auto;
+	border: 1px solid #ccc;
+	padding: 1rem;
+	background-color: #fdfdfd;
+	border-radius: 6px;
+	font-size: 0.95rem;
+	line-height: 1.6;
+  }
+
+  .reglement-scrollable h2 {
+	font-size: 1.2rem;
+	color: #1544b5;
+	margin-top: 0;
+	margin-bottom: 1rem;
+	text-align: center;
+  }
+
+  .reglement-scrollable h3 {
+	margin-top: 1.2rem;
+	font-size: 1rem;
+	color: #222;
+  }
+
+  .reglement-scrollable ul {
+	padding-left: 1.2rem;
+	margin: 0.5rem 0;
+  }
+
+  .reglement-scrollable li {
+	margin-bottom: 0.3rem;
+  }
+
+  /* Formulaire */
+  form {
+	flex: 1;
 	display: flex;
 	flex-direction: column;
-}
+  }
 
-label {
+  label {
 	margin: 0.5rem 0 0.2rem;
 	font-weight: bold;
-}
+  }
 
-input,
-textarea,
-select {
+  input,
+  textarea,
+  select {
 	padding: 0.5rem;
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -68,14 +117,14 @@ select {
 	background-color: #f0f4ff;
 	width: 100%;
 	box-sizing: border-box;
-}
+  }
 
-input[type="checkbox"] {
+  input[type="checkbox"] {
 	width: auto;
 	margin-right: 0.5rem;
-}
+  }
 
-button {
+  button {
 	margin-top: 1rem;
 	padding: 0.7rem;
 	background-color: #2ecc71;
@@ -84,70 +133,38 @@ button {
 	border-radius: 4px;
 	cursor: pointer;
 	font-size: 1rem;
-}
+  }
 
-button:hover {
+  button:hover {
 	background-color: #27ae60;
-}
+  }
 
-.success-message {
+  .success-message {
 	margin-top: 1rem;
 	color: #2ecc71;
 	font-weight: bold;
-}
+  }
 
-/* Bloc règlement scrollable */
-.reglement-scrollable {
-	max-height: 400px;
-	overflow-y: auto;
-	border: 1px solid #ccc;
-	padding: 1rem;
-	margin-bottom: 2rem;
-	background-color: #fdfdfd;
-	border-radius: 6px;
-	font-size: 0.95rem;
-	line-height: 1.6;
-}
-
-.reglement-scrollable h2 {
-	font-size: 1.2rem;
-	color: #1544b5;
-	margin-top: 0;
-	margin-bottom: 1rem;
-	text-align: center;
-}
-
-.reglement-scrollable h3 {
-	margin-top: 1.2rem;
-	font-size: 1rem;
-	color: #222;
-}
-
-.reglement-scrollable ul {
-	padding-left: 1.2rem;
-	margin: 0.5rem 0;
-}
-
-.reglement-scrollable li {
-	margin-bottom: 0.3rem;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-	body {
-		padding: 0.5rem;
+  /* Responsive */
+  @media (max-width: 768px) {
+	.grid-layout {
+	  flex-direction: column;
 	}
 
 	.container {
-		padding: 1rem 0.5rem;
-	}
-
-	header img {
-		width: 90px;
+	  padding: 1rem 0.5rem;
 	}
 
 	.reglement-scrollable {
-		font-size: 0.9rem;
-		max-height: 300px;
+	  max-height: 300px;
+	  font-size: 0.9rem;
 	}
-}
+
+	.title-header {
+	  font-size: 1.4rem;
+	}
+
+	.logo-img {
+	  width: 100px;
+	}
+  }
