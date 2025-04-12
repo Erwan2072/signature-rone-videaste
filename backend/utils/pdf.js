@@ -203,11 +203,11 @@ async function generatePDF(data) {
 
     // Intégration dans le PDF
     const signatureImage = await pdfDoc.embedPng(signatureImageBytes); // ou .embedJpg si ton image est en JPG
-    const sigDims = signatureImage.scale(0.5); // tu peux ajuster l’échelle ici
+    const sigDims = signatureImage.scale(0.1); // tu peux ajuster l’échelle ici
 
     // Placement de l’image (tu peux ajuster les coordonnées x et y)
     page.drawImage(signatureImage, {
-      x: 50, // distance depuis la gauche
+      x: 20, // distance depuis la gauche
       y: 100, // distance depuis le bas
       width: sigDims.width,
       height: sigDims.height,
