@@ -3,75 +3,64 @@ body {
 	background-color: #737373;
 	font-family: Arial, sans-serif;
 	margin: 0;
-	padding: 0 1rem;
-	color: white;
-  }
+	padding: 0;
+	color: #000;
+}
 
-  .logo-wrapper {
-	display: flex;
-	justify-content: center;
-	margin-top: 1rem;
-  }
+/* Header */
+header {
+	background-color: #444;
+	padding: 1rem;
+	text-align: center;
+}
 
-  .logo {
+header img {
 	width: 120px;
-  }
+	height: auto;
+	border-radius: 50%;
+	margin-bottom: 0.5rem;
+}
 
-  .header-title {
-	text-align: center;
-	margin-top: 0.5rem;
-	margin-bottom: 2rem;
-  }
-
-  .header-title h1 {
-	font-size: 1.8rem;
+header h1 {
+	font-size: 1.5rem;
 	margin: 0;
-  }
+	font-weight: normal;
+}
 
-  .r-red {
-	color: #d42424;
+.brand-highlight {
 	font-weight: bold;
-  }
+	color: #e60000; /* Rouge pour "R-One" */
+}
 
-  .one-white {
-	color: white;
-	font-weight: 600;
-  }
+.brand-subtext {
+	color: #ffffff; /* Blanc pour "Vidéaste" */
+	font-weight: bold;
+}
 
-  .videaste-white {
-	display: block;
-	letter-spacing: 0.3rem;
-	font-size: 1rem;
-	margin-top: 0.3rem;
-	font-weight: 600;
-	color: white;
-  }
-
-  .container {
+/* Container */
+.container {
 	max-width: 600px;
-	margin: 0 auto;
-	padding-top: 2rem;
-  }
+	margin: 2rem auto;
+	padding: 1rem;
+	background-color: #fdfdfd;
+	border-radius: 8px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  h1 {
-	text-align: center;
-	font-size: 1.8rem;
-	margin-bottom: 2rem;
-  }
-
-  form {
+/* Formulaire */
+form {
 	display: flex;
 	flex-direction: column;
-  }
+}
 
-  label {
+label {
 	margin: 0.5rem 0 0.2rem;
 	font-weight: bold;
-  }
+}
 
-  input,
-  textarea,
-  select {
+input,
+textarea,
+select {
 	padding: 0.5rem;
 	border: 1px solid #ccc;
 	border-radius: 4px;
@@ -79,15 +68,14 @@ body {
 	background-color: #f0f4ff;
 	width: 100%;
 	box-sizing: border-box;
-	color: #000;
-  }
+}
 
-  input[type="checkbox"] {
+input[type="checkbox"] {
 	width: auto;
 	margin-right: 0.5rem;
-  }
+}
 
-  button {
+button {
 	margin-top: 1rem;
 	padding: 0.7rem;
 	background-color: #2ecc71;
@@ -96,20 +84,20 @@ body {
 	border-radius: 4px;
 	cursor: pointer;
 	font-size: 1rem;
-  }
+}
 
-  button:hover {
+button:hover {
 	background-color: #27ae60;
-  }
+}
 
-  .success-message {
+.success-message {
 	margin-top: 1rem;
 	color: #2ecc71;
 	font-weight: bold;
-  }
+}
 
-  /* Bloc règlement scrollable */
-  .reglement-scrollable {
+/* Bloc règlement scrollable */
+.reglement-scrollable {
 	max-height: 400px;
 	overflow-y: auto;
 	border: 1px solid #ccc;
@@ -119,52 +107,47 @@ body {
 	border-radius: 6px;
 	font-size: 0.95rem;
 	line-height: 1.6;
-	color: black;
-  }
+}
 
-  .reglement-scrollable h2 {
+.reglement-scrollable h2 {
 	font-size: 1.2rem;
 	color: #1544b5;
 	margin-top: 0;
 	margin-bottom: 1rem;
 	text-align: center;
-  }
+}
 
-  .reglement-scrollable h3 {
+.reglement-scrollable h3 {
 	margin-top: 1.2rem;
 	font-size: 1rem;
 	color: #222;
-  }
+}
 
-  .reglement-scrollable ul {
+.reglement-scrollable ul {
 	padding-left: 1.2rem;
 	margin: 0.5rem 0;
-  }
+}
 
-  .reglement-scrollable li {
+.reglement-scrollable li {
 	margin-bottom: 0.3rem;
-  }
+}
 
-  /* Responsive */
-  @media (max-width: 600px) {
+/* Responsive */
+@media (max-width: 600px) {
 	body {
-	  padding: 0.5rem;
+		padding: 0.5rem;
 	}
 
 	.container {
-	  padding: 1rem 0.5rem;
+		padding: 1rem 0.5rem;
 	}
 
-	h1 {
-	  font-size: 1.5rem;
+	header img {
+		width: 90px;
 	}
 
 	.reglement-scrollable {
-	  font-size: 0.9rem;
-	  max-height: 300px;
+		font-size: 0.9rem;
+		max-height: 300px;
 	}
-
-	.reglement-scrollable h2 {
-	  font-size: 1.1rem;
-	}
-  }
+}
