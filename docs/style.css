@@ -18,18 +18,10 @@ body {
 }
 
 .logo-img {
-	width: 100px;
+	width: 150px;
 	height: auto;
 	border-radius: 50%;
 	margin-bottom: 0.5rem;
-}
-
-.title-img {
-	width: 320px; /* plus grand */
-	max-width: 100%;
-	height: auto;
-	display: block;
-	margin: 0 auto 1rem auto;
 }
 
 /* Avertissement scroll */
