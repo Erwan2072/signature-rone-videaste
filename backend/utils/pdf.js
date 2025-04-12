@@ -194,8 +194,9 @@ async function generatePDF(data) {
 
     y -= 20;
     write("Signature de la personne concernee :", " (precedee de la mention 'Lu et approuve')", { indent: 0 });
-    write("", `Lu et approuve - ${prenom} ${nom}`, { indent: 10, valueFont: italic });
+    write("", `Lu et approuve - ${prenom} ${nom}`, { indent: 20, valueFont: italic });
     y -= 20;
+
     write("Signature Gérant:", " ", { indent: 0 });
     // Lecture du fichier image (doit être à la racine du projet ou dans un dossier précis)
     const signatureImageBytes = fs.readFileSync(path.resolve(__dirname, 'signature_tampon.png')); // remplace par ton image
@@ -207,7 +208,7 @@ async function generatePDF(data) {
     // Placement de l’image (tu peux ajuster les coordonnées x et y)
     page.drawImage(signatureImage, {
       x: 30, // distance depuis la gauche
-      y: 250, // distance depuis le bas
+      y: 260, // distance depuis le bas
       width: sigDims.width,
       height: sigDims.height,
     });
