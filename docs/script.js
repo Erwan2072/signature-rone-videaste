@@ -1,24 +1,3 @@
-window.onload = function () {
-  const form = document.getElementById("signature-form");
-  const inputs = form.querySelectorAll("input, button");
-  inputs.forEach(el => el.disabled = true);
-
-  const warning = document.getElementById("scroll-warning");
-  if (warning) warning.style.display = "block";
-};
-
-// Vérifie si on a scrollé jusqu’en bas du règlement
-function checkScroll() {
-  const box = document.getElementById("terms-box");
-  const form = document.getElementById("signature-form");
-  const warning = document.getElementById("scroll-warning");
-
-  if (box.scrollTop + box.clientHeight >= box.scrollHeight) {
-    form.querySelectorAll("input, button").forEach(el => el.disabled = false);
-    if (warning) warning.style.display = "none";
-  }
-}
-
 document.getElementById("signature-form").addEventListener("submit", async function (e) {
   e.preventDefault();
 
