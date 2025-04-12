@@ -197,18 +197,17 @@ async function generatePDF(data) {
     write("", `Lu et approuve - ${prenom} ${nom}`, { indent: 10, valueFont: italic });
     y -= 20;
     write("Signature de R-One Videaste :", " ", { indent: 0 });
-    write("", "R-One Videaste", { indent: 10, valueFont: italic });
     // Lecture du fichier image (doit être à la racine du projet ou dans un dossier précis)
     const signatureImageBytes = fs.readFileSync(path.resolve(__dirname, 'signature_tampon.png')); // remplace par ton image
 
     // Intégration dans le PDF
     const signatureImage = await pdfDoc.embedPng(signatureImageBytes); // ou .embedJpg si ton image est en JPG
-    const sigDims = signatureImage.scale(0.1); // tu peux ajuster l’échelle ici
+    const sigDims = signatureImage.scale(0.2); // tu peux ajuster l’échelle ici
 
     // Placement de l’image (tu peux ajuster les coordonnées x et y)
     page.drawImage(signatureImage, {
-      x: 20, // distance depuis la gauche
-      y: 100, // distance depuis le bas
+      x: 30, // distance depuis la gauche
+      y: 150, // distance depuis le bas
       width: sigDims.width,
       height: sigDims.height,
     });
