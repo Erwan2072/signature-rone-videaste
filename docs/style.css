@@ -12,7 +12,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	justify-content: center;
 	padding: 2rem 1rem 1rem;
+	text-align: center;
 }
 
 .logo-img {
@@ -23,11 +25,11 @@ body {
 }
 
 .title-img {
-	width: 250px;
-	max-width: 90%;
+	width: 320px; /* plus grand */
+	max-width: 100%;
 	height: auto;
-	margin-bottom: 1rem;
 	display: block;
+	margin: 0 auto 1rem auto;
 }
 
 /* Avertissement scroll */
@@ -147,7 +149,7 @@ footer {
 	margin-top: 2rem;
 	text-align: center;
 	background-color: #444;
-	padding: 1rem 0 0;
+	padding: 0.5rem 0 0.2rem;
 }
 
 .footer-banner {
@@ -157,6 +159,8 @@ footer {
 	display: block;
 	margin: 0 auto;
 	border-top: 4px solid #444;
+	max-height: 140px; /* Limite visuelle raisonnable */
+	object-fit: cover;
 }
 
 /* Responsive */
@@ -179,6 +183,6 @@ footer {
 	}
 
 	.title-img {
-		width: 200px;
+		width: 220px;
 	}
 }
