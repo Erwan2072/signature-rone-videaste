@@ -17,9 +17,12 @@ document.getElementById("signature-form").addEventListener("submit", async funct
     return;
   }
 
-  // Réinitialiser message et afficher overlay
+  // Réinitialiser message précédent
   statusMessage.textContent = "";
-  document.getElementById("loading-overlay").style.display = "flex";
+
+  // Afficher popup de chargement
+  const popup = document.getElementById("loading-popup");
+  popup.style.display = "flex";
 
   const payload = { prenom, nom, email, adresse, telephone, faitA, date };
 
@@ -48,6 +51,6 @@ document.getElementById("signature-form").addEventListener("submit", async funct
     statusMessage.style.color = "red";
   }
 
-  // Cacher le loader une fois terminé
-  document.getElementById("loading-overlay").style.display = "none";
+  // Cacher le popup une fois terminé
+  popup.style.display = "none";
 });
