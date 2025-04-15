@@ -7,7 +7,7 @@ body {
 	color: #000;
 }
 
-/* Header avec logo + image titre */
+/* Header avec logo */
 .logo-header {
 	display: flex;
 	flex-direction: column;
@@ -151,8 +151,43 @@ footer {
 	display: block;
 	margin: 0 auto;
 	border-top: 4px solid #444;
-	max-height: 140px; /* Limite visuelle raisonnable */
+	max-height: 140px;
 	object-fit: cover;
+}
+
+/* Overlay de chargement */
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 9999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.spinner-box {
+	text-align: center;
+	color: white;
+}
+
+.loader {
+	border: 6px solid #f3f3f3;
+	border-top: 6px solid #2ecc71;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	animation: spin 1s linear infinite;
+	margin: auto;
+	margin-bottom: 1rem;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }
 
 /* Responsive */
@@ -176,40 +211,5 @@ footer {
 
 	.title-img {
 		width: 220px;
-	}
-
-	/* Overlay de chargement */
-	.overlay {
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-color: rgba(0, 0, 0, 0.6);
-		z-index: 9999;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.spinner-box {
-		text-align: center;
-		color: white;
-	}
-
-	.loader {
-		border: 6px solid #f3f3f3;
-		border-top: 6px solid #2ecc71;
-		border-radius: 50%;
-		width: 40px;
-		height: 40px;
-		animation: spin 1s linear infinite;
-		margin: auto;
-		margin-bottom: 1rem;
-	}
-
-	@keyframes spin {
-		0% { transform: rotate(0deg); }
-		100% { transform: rotate(360deg); }
 	}
 }
