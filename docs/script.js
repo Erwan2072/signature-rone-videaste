@@ -18,6 +18,8 @@ document.getElementById("signature-form").addEventListener("submit", async funct
 
   const payload = { prenom, nom, email, adresse, telephone, faitA, date };
 
+  document.getElementById("loading-overlay").style.display = "flex";
+
   try {
     const response = await fetch("https://signature-rone-videaste.onrender.com/send-pdf", {
       method: "POST",
@@ -43,4 +45,7 @@ document.getElementById("signature-form").addEventListener("submit", async funct
     document.getElementById("status-message").textContent =
       "❌ Une erreur est survenue : " + error.message;
   }
+
+  document.getElementById("loading-overlay").style.display = "none";
+
 });
